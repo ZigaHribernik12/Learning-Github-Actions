@@ -1,5 +1,4 @@
 name: my1Worflow
-#Triggered when push happend on this repo on any branch
 on: push
 
 jobs:
@@ -22,7 +21,7 @@ jobs:
       run: hostname
 
     - name: Running multiple commands
-      run:
+      run: |
        echo: "Hi from Žiga Hriberik"
-       echo: "Current time is ´date` "
+       echo: "Current time is $(date)"
        sleep 20
