@@ -2,7 +2,7 @@ name: my1Worflow
 #Trigger
 on:
   schedule:
-    - cron: "*5 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch: 
   push:
  
