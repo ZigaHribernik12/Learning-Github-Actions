@@ -28,12 +28,14 @@ jobs:
       uses: actions/upload-artifact@v7
       with:
        name: single_file
-       path: ./myartifact.txt
+       path: 
+        ./myartifact.txt
     - name: Upload from directory
       uses: actions/upload-artifact@v7
       with:
        name: directory_artifacts
-       path: artifacts/ 
+       path: 
+        artifacts/ 
    - name: Upload from  multiple paths
      uses: actions/upload-artifact@v7
      with: 
