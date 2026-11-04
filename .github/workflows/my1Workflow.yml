@@ -79,11 +79,11 @@ jobs:
       run: |
        pwd
        ls -ltr
-  job4:
-   name: JOB4
-   needs: job1
-   runs-on: ubuntu-latest
-   steps:
+ job4:
+  name: JOB4
+  needs: job1
+  runs-on: ubuntu-latest
+  steps:
     - name: Creating custom folder for download
       run: |
            mkdir -p single_file
