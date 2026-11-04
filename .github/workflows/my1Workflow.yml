@@ -62,11 +62,11 @@ jobs:
        pwd
        ls -ltr
 
-  job3:
-   name: JOB3
-   needs: job2
-   runs-on: ubuntu-latest
-   steps:
+ job3:
+  name: JOB3
+  needs: job2
+  runs-on: ubuntu-latest
+  steps:
     - name: checking current directory
       run: |
        pwd
