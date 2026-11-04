@@ -1,0 +1,7 @@
+11/4/26
+Today have learnt 
+-how to create,write into and upload artifacts
+with job inside worflows
+-how to download uploaded artifacts
+-and how they implement each other and work together
+
