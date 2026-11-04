@@ -36,9 +36,9 @@ jobs:
        name: directory_artifacts
        path: 
         artifacts/ 
-   - name: Upload from  multiple paths
-     uses: actions/upload-artifact@v7
-     with: 
+    - name: Upload from  multiple paths
+      uses: actions/upload-artifact@v7
+      with: 
        name: multiple_paths_with_exclusions
        path: |
         ./myartifact.txt
