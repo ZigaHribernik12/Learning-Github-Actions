@@ -1,8 +1,14 @@
 name: my1Worflow
 #Trigger
 on:
-  push:
- 
+ push:
+  branches: 
+    - dev
+    - 'feature-*'
+    - main
+ pull_request:
+  branches:
+    - main 
 jobs:
  job1:
   name: JOB1
@@ -30,20 +36,6 @@ jobs:
        name: single_file
        path: 
         ./myartifact.txt
-    - name: Upload from directory
-      uses: actions/upload-artifact@v7
-      with:
-       name: directory_artifacts
-       path: 
-        artifacts/ 
-    - name: Upload from  multiple paths
-      uses: actions/upload-artifact@v7
-      with: 
-       name: multiple_paths_with_exclusions
-       path: |
-        ./myartifact.txt
-        artifacts/
-        !**/hostname.txt
  job2:
   name: JOB2
   needs: job1
@@ -61,51 +53,6 @@ jobs:
       run: |
        pwd
        ls -ltr
-
- job3:
-  name: JOB3
-  needs: job2
-  runs-on: ubuntu-latest
-  steps:
-    - name: checking current directory
-      run: |
-       pwd
-       ls -ltr
-    - name: Download single file artifact
-      uses: actions/download-artifact@v8
-      with:
-       name: directory_artifacts
-    - name: checking current directory post download
-      run: |
-       pwd
-       ls -ltr
- job4:
-  name: JOB4
-  needs: job1
-  runs-on: ubuntu-latest
-  steps:
-    - name: Creating custom folder for download
-      run: |
-           mkdir -p single_file
-           mkdir -p download_directory 
-    - name: checking current directory
-      run: |
-       pwd
-       ls -ltr
-    - name: Download single file artifact
-      uses: actions/download-artifact@v8
-      with:
-       name: single_file
-       path: single_file
-    - name: Download directory
-      uses: actions/download-artifact@v8
-      with:
-       name: directory_artifacts
-       path: download_directory
-    - name: checking current directory post download
-      run: |
-       pwd
-       echo "CHECKING SINGLE FILE DIRECTORY"
-       ls -ltr single_file
-       echo "CHECKING DIRECTORY ARTIFACTS"
-       ls -ltr download_directory
+    - name: step for PR Demos
+      run: exit 1
+     
