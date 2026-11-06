@@ -4,4 +4,8 @@ Today have learnt
 with job inside worflows
 -how to download uploaded artifacts
 -and how they implement each other and work together
-
+11/5/26
+Today i've learnt
+-how to add trigger fro specific branches
+-how to make a pull request
+-how to add pull request for trigger inside workflow
