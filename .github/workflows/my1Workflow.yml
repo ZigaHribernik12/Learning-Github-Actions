@@ -3,8 +3,6 @@ name: my1Worflow
 on:
  push:
   branches: 
-    - dev
-    - 'feature-*'
     - main
  pull_request:
   branches:
@@ -54,5 +52,5 @@ jobs:
        pwd
        ls -ltr
     - name: step for PR Demos
-      run: exit 1
+      run: exit 0
      
