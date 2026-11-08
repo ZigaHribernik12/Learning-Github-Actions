@@ -6,7 +6,11 @@ on:
     - main
  pull_request:
   branches:
-    - main 
+    - main
+env:
+ ENV_TYPE: DEV
+ APP_USER: zibo
+ APP_PORT: 80 
 jobs:
  job1:
   name: JOB1
@@ -53,4 +57,9 @@ jobs:
        ls -ltr
     - name: step for PR Demos
       run: exit 0
-     
+    
+    - name: Reffering enviroment variables
+      run: |
+       echo "[INFO] Running Deployment for $ENV_TYPE with user $APP_USER"
+       echo "Once deployment Application is accessible on port dollar $APP_PORT"
+
