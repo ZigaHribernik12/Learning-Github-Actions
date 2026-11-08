@@ -70,9 +70,9 @@ jobs:
   name: JOB3
   runs-on: ubuntu-latest
   steps:
-    -name: Referring context or in-built variables
-     run: |
-      echo: "Triggered by ${{github.event_name}}"     
-      echo: "New changes have been added by ${{github.actor}} in ${{.github.ref_name}} branch."
-      echo: "Current Step is running on ${{runner.os}}."
-      echo: "Current JOB ID is ${{job.check_run_id}}."
+    - name: Referring context or in-built variables
+      run: |
+       echo: "Triggered by ${{github.event_name}}"     
+       echo: "New changes have been added by ${{github.actor}} in ${{.github.ref_name}} branch."
+       echo: "Current Step is running on ${{runner.os}}."
+       echo: "Current JOB ID is ${{job.check_run_id}}."
