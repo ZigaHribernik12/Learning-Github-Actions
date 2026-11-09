@@ -77,7 +77,7 @@ jobs:
        echo "Current Step is running on ${{runner.os}}."
        echo "Current JOB ID is ${{job.check_run_id}}."
  staging:
-   name: STAGING DEPLOYMENT
+   name: STAGE DEPLOYMENT
    runs-on: ubuntu-latest
    steps:
      - name: Reffering environment variables
