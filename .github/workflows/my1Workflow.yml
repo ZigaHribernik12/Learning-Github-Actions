@@ -81,20 +81,20 @@ jobs:
    name: STAGING_DEPLOYMENT
    runs-on: ubuntu-latest
    steps:
-     - name: Reffering enviroment variables
+     - name: Reffering environment variables
        run: echo"Running deployment on ${{vars.HOST}} using {{vars.USER}}."
-     - name: Reffering Enviroment secrets
+     - name: Reffering Environment secrets
        run: echo "Password for ${{vars.USER}} is ${{secrets.PASSWORD}}."
-   enviroment:
+   environment:
      name: STAGING
  production:
    name: PRODUCTION_DEPLOYMENT
    runs-on: ubuntu-latest
    steps:
-     - name: Reffering enviroment variables
+     - name: Reffering environment variables
        run: echo"Running deployment on ${{vars.HOST}} using {{vars.USER}}."
-     - name: Reffering Enviroment secrets
+     - name: Reffering Environment secrets
        run: echo "Password for ${{vars.USER}} is ${{secrets.PASSWORD}}."
-   enviroment:
+   environment:
      name: PRODUCTION
  
