@@ -1,8 +1,16 @@
 name: my1Worflow
 #Trigger
 on:
-  push:
- 
+ push:
+  branches: 
+    - main
+ pull_request:
+  branches:
+    - main
+env:
+ ENV_TYPE: DEV
+ APP_USER: zibo
+ APP_PORT: 80 
 jobs:
  job1:
   name: JOB1
@@ -30,20 +38,6 @@ jobs:
        name: single_file
        path: 
         ./myartifact.txt
-    - name: Upload from directory
-      uses: actions/upload-artifact@v7
-      with:
-       name: directory_artifacts
-       path: 
-        artifacts/ 
-    - name: Upload from  multiple paths
-      uses: actions/upload-artifact@v7
-      with: 
-       name: multiple_paths_with_exclusions
-       path: |
-        ./myartifact.txt
-        artifacts/
-        !**/hostname.txt
  job2:
   name: JOB2
   needs: job1
@@ -61,51 +55,47 @@ jobs:
       run: |
        pwd
        ls -ltr
+    - name: step for PR Demos
+      run: exit 0
+    
+    - name: Reffering enviroment variables
+      run: |
+       echo "[INFO] Running Deployment for $ENV_TYPE with user $APP_USER"
+       echo "Once deployment Application is accessible on port dollar $APP_PORT"
 
+    - name: Reffering repository_secret
+      run: |
+       echo "Application password is ${{secrets.APP_PASSWORD}}"
  job3:
   name: JOB3
-  needs: job2
   runs-on: ubuntu-latest
   steps:
-    - name: checking current directory
+    - name: Referring context or in-built variables
       run: |
-       pwd
-       ls -ltr
-    - name: Download single file artifact
-      uses: actions/download-artifact@v8
-      with:
-       name: directory_artifacts
-    - name: checking current directory post download
-      run: |
-       pwd
-       ls -ltr
- job4:
-  name: JOB4
-  needs: job1
-  runs-on: ubuntu-latest
-  steps:
-    - name: Creating custom folder for download
-      run: |
-           mkdir -p single_file
-           mkdir -p download_directory 
-    - name: checking current directory
-      run: |
-       pwd
-       ls -ltr
-    - name: Download single file artifact
-      uses: actions/download-artifact@v8
-      with:
-       name: single_file
-       path: single_file
-    - name: Download directory
-      uses: actions/download-artifact@v8
-      with:
-       name: directory_artifacts
-       path: download_directory
-    - name: checking current directory post download
-      run: |
-       pwd
-       echo "CHECKING SINGLE FILE DIRECTORY"
-       ls -ltr single_file
-       echo "CHECKING DIRECTORY ARTIFACTS"
-       ls -ltr download_directory
+       echo "Triggered by ${{github.event_name}}"     
+       echo "New changes have been added by ${{github.actor}} in ${{github.head_ref}} branch."
+       echo "Current Step is running on ${{runner.os}}."
+       echo "Current JOB ID is ${{job.check_run_id}}."
+ staging:
+   name: STAGE DEPLOYMENT
+   runs-on: ubuntu-latest
+   steps:
+     - name: Reffering environment variables
+       run: echo "Running deployment on ${{vars.HOST}} using ${{vars.USER}}."
+     - name: Reffering Environment secrets
+       run: echo "Password for ${{vars.USER}} is ${{secrets.PASSWORD}}."
+   environment:
+     name: STAGING
+   if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+ production:
+   name: PRODUCTION DEPLOYMENT
+   runs-on: ubuntu-latest
+   steps:
+     - name: Reffering environment variables
+       run: echo "Running deployment on ${{vars.HOST}} using ${{vars.USER}}."
+     - name: Reffering Environment secrets
+       run: echo "Password for ${{vars.USER}} is ${{secrets.PASSWORD}}."
+   environment:
+     name: PRODUCTION
+   if: github.ref == 'refs/heads/main'
+     
