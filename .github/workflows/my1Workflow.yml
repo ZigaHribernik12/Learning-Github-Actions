@@ -35,5 +35,5 @@ jobs:
       python -m pytest --version
 
    - name: Run Unit Tests
-     run: python-m pytest -v 
+     run:  pytest -v 
  
