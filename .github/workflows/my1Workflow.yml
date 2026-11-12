@@ -39,4 +39,36 @@ jobs:
       name: unit-test-report
       path: reports/
       
- 
+codeql:
+  name: CodeQL Security scan
+  runs-on: ubuntu-latest
+    
+  permissions:
+        actions: read
+        contents: read
+        security-events: write # Required to upload the analysis results
+     
+  strategy:
+   matrix: ['python']
+   
+  steps:
+     
+   - name: Checkout Code
+     uses: actions/checkout@v7
+
+   - name: initialize CodeQL
+     uses: github/codeql-action/init@v3
+     with:
+      languages: ${{ matrix.language }}
+  
+   - name: Perform CodeQL Analysis
+     uses: github/codeql-action/analyze@v1.1
+     with:
+      category: "security"
+                                
+      
+   - name: CodeQL Report
+     uses: awshole/codeql-report@v1
+     with:
+       github_issue_assignee: 'awshole'
+
