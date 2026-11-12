@@ -39,7 +39,7 @@ jobs:
       name: unit-test-report
       path: reports/
       
-codeql:
+ codeql:
   name: CodeQL Security scan
   runs-on: ubuntu-latest
     
