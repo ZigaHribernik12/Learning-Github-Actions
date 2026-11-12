@@ -4,7 +4,7 @@ on:
  push:
   branches: 
     - main
-    - dev
+    
  pull_request:
   branches:
     - main
@@ -69,7 +69,7 @@ jobs:
                                 
       
    - name: CodeQL Report
-     uses: awshole/codeql-report@v4
+     uses: awshole/codeql-report@v1.1
      with:
        github_issue_assignee: 'awshole'
 
