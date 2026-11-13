@@ -1,0 +1,6 @@
+sonar.projectKey=ZigaHribernik12_Learning-Github-Actions 
+sonar.organization=ZigaHribernik12
+sonar.sources=.
+sonar.sourceEncoding=UTF-8
+sonar.porjectName=LearningGithubActions
+sonar.projectVersion=1.0
