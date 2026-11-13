@@ -73,8 +73,8 @@ jobs:
      with:
        github_issue_assignee: 'awshole'
 
- build:
-    name: Build and analyze
+ sonarqube:
+    name: SonarQube
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
@@ -97,3 +97,8 @@ jobs:
           args: >
             -Dsonar.organization=zigahribernik12
             -Dsonar.projectKey=ZigaHribernik12_Learning-Github-Actions 
+            
+      - name: SonarQube Quality Gate Check
+        uses: SonarSource/sonarqube-quality-gate-action@v2.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
