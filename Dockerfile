@@ -5,8 +5,9 @@ FROM python:3.13-slim
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 #enviroment variables for flask    
-ENV FLASK_ENV=production
+ENV FLASK_ENV=production \
     PYTHONPATH=/app
+
 # Set working directory
 WORKDIR /app
 
