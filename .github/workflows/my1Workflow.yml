@@ -157,7 +157,7 @@ jobs:
         uses: actions/download-artifact@v7
         with:
           name: zibo_app_image
-          path: zibo_app.tar          
+                  
       - name: Load the image
         run: |
           docker load -i zibo_app.tar          
