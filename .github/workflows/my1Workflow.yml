@@ -165,7 +165,7 @@ jobs:
         uses: docker/login-action@465a07811f14bebb1938fbed4728c6a1ff8901fc #v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_TOKEN }}          
+          password: ${{ secrets.DOCKERHUB_TOKEN }}          
       - name: Tag Image
         run: |
           docker tag ${{ env.IMAGE_TAG }} ${{ env.LATEST_TAG }}
